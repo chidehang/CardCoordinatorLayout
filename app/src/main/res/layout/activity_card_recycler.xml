@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.demo.cdh.cardcoordinatorlayout.view.SlidingCardLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:sectionTitle="星期一"
+        app:sectionBackgroundColor="#3a84ff"/>
+
+    <com.demo.cdh.cardcoordinatorlayout.view.SlidingCardLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:sectionTitle="星期二"
+        app:sectionBackgroundColor="#367F25"/>
+
+    <com.demo.cdh.cardcoordinatorlayout.view.SlidingCardLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:sectionTitle="星期三"
+        app:sectionBackgroundColor="#FF4081"/>
+
+    <com.demo.cdh.cardcoordinatorlayout.view.SlidingCardLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:sectionTitle="星期四"
+        app:sectionBackgroundColor="#F78D4A"/>
+
+    <com.demo.cdh.cardcoordinatorlayout.view.SlidingCardLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:sectionTitle="星期五"
+        app:sectionBackgroundColor="#F02828"/>
+</android.support.design.widget.CoordinatorLayout>
