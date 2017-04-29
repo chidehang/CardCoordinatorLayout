@@ -34,6 +34,8 @@ public class SlidingCardLayout extends FrameLayout {
 
     private int headerViewHeight;
 
+    private int itemCount;  //数据数量
+
     public SlidingCardLayout(@NonNull Context context) {
         super(context);
         init(context, null, 0);
@@ -77,6 +79,10 @@ public class SlidingCardLayout extends FrameLayout {
         return headerViewHeight;
     }
 
+    public int getItemCount() {
+        return itemCount;
+    }
+
     /**
      * 模拟数据
      */
@@ -93,5 +99,6 @@ public class SlidingCardLayout extends FrameLayout {
         list.add("历史");
         rvContent.setLayoutManager(new FullyLinearLayoutManager(context));
         rvContent.setAdapter(new ListDataAdapter(context, list));
+        itemCount = list.size();
     }
 }

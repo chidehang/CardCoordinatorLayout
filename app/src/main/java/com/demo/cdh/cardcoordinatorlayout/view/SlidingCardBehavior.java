@@ -2,6 +2,8 @@ package com.demo.cdh.cardcoordinatorlayout.view;
 
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.view.ViewCompat;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 /**
@@ -63,6 +65,30 @@ public class SlidingCardBehavior extends CoordinatorLayout.Behavior<SlidingCardL
         //监听垂直滑动,设置偏移量
         // dy>0 向上滑   dy<0向下滑
         if(dy == 0)
+            return;
+
+        //解决RecyclerView滑动冲突(这里只解决LinearLayoutManager，其他LayoutManager解决方法一样)
+        boolean conflict = false;
+        if(target instanceof RecyclerView) {
+            RecyclerView recyclerView = (RecyclerView) target;
+            if(recyclerView.getLayoutManager() instanceof LinearLayoutManager) {
+                conflict = true;
+                LinearLayoutManager lm = (LinearLayoutManager) recyclerView.getLayoutManager();
+                if(dy > 0) {
+                    int lastPosition = lm.findLastCompletelyVisibleItemPosition();
+                    if(lastPosition==(child.getItemCount()-1) || lastPosition==RecyclerView.NO_POSITION) {
+                        conflict = false;
+                    }
+                } else if(dy < 0) {
+                    int firstPosition = lm.findFirstCompletelyVisibleItemPosition();
+                    if(firstPosition==0 || firstPosition==RecyclerView.NO_POSITION) {
+                        conflict = false;
+                    }
+                }
+            }
+        }
+
+        if(conflict)
             return;
 
         int upOffset = child.getTop() - initialOffset;
